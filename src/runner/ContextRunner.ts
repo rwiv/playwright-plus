@@ -1,6 +1,6 @@
-import {Browser, BrowserContext, Page} from "playwright";
+import {Browser, BrowserContext} from "playwright";
 
-export abstract class ContextRunner {
+export abstract class ContextRunner<T> {
 
   public readonly browser: Browser
 
@@ -15,9 +15,10 @@ export abstract class ContextRunner {
   }
 
   async launch() {
-    await this.run();
+    const result = await this.run();
     await this.context.close();
+    return result;
   }
 
-  protected abstract run(): Promise<void>;
+  protected abstract run(): Promise<T>;
 }

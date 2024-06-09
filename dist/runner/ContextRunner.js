@@ -10,7 +10,8 @@ export class ContextRunner {
         this.browser = browser;
     }
     async launch() {
-        await this.run();
+        const result = await this.run();
         await this.context.close();
+        return result;
     }
 }

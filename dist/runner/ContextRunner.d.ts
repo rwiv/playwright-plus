@@ -1,8 +1,8 @@
 import { Browser, BrowserContext } from "playwright";
-export declare abstract class ContextRunner {
+export declare abstract class ContextRunner<T> {
     readonly context: BrowserContext;
     readonly browser: Browser;
     constructor(context: BrowserContext);
-    launch(): Promise<void>;
-    protected abstract run(): Promise<void>;
+    launch(): Promise<T>;
+    protected abstract run(): Promise<T>;
 }

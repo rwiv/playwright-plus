@@ -1,7 +1,7 @@
 import { Browser } from "playwright";
-export declare abstract class BrowserRunner {
+export declare abstract class BrowserRunner<T> {
     readonly browser: Browser;
     constructor(browser: Browser);
-    launch(): Promise<void>;
-    abstract run(): Promise<void>;
+    launch(): Promise<T>;
+    abstract run(): Promise<T>;
 }

@@ -12,7 +12,8 @@ export class PageRunner {
         this.browser = browser;
     }
     async launch() {
-        await this.run();
+        const result = await this.run();
         await this.page.close();
+        return result;
     }
 }

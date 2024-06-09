@@ -4,7 +4,8 @@ export class OnePageRunner extends PageRunner {
         super(page);
     }
     async launch() {
-        await this.run();
+        const result = await this.run();
         await this.browser.close();
+        return result;
     }
 }

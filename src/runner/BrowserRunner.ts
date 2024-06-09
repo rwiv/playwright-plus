@@ -1,6 +1,6 @@
 import {Browser} from "playwright";
 
-export abstract class BrowserRunner {
+export abstract class BrowserRunner<T> {
 
   constructor(
     public readonly browser: Browser,
@@ -8,9 +8,10 @@ export abstract class BrowserRunner {
   }
 
   async launch() {
-    await this.run();
+    const result = await this.run();
     await this.browser.close();
+    return result;
   }
 
-  abstract run(): Promise<void>;
+  abstract run(): Promise<T>;
 }

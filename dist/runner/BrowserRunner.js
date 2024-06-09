@@ -4,7 +4,8 @@ export class BrowserRunner {
         this.browser = browser;
     }
     async launch() {
-        await this.run();
+        const result = await this.run();
         await this.browser.close();
+        return result;
     }
 }
