@@ -1,6 +1,5 @@
-import { BrowserRunner } from "./runner/BrowserRunner.js";
-import { ContextRunner } from "./runner/ContextRunner.js";
-import { PageRunner } from "./runner/PageRunner.js";
-import { OnePageRunner } from "./runner/OnePageRunner.js";
-import { browser, newPage } from "./utils/utils.js";
-export { BrowserRunner, ContextRunner, PageRunner, OnePageRunner, browser, newPage, };
+export * from "./runner/BrowserRunner.js";
+export * from "./runner/ContextRunner.js";
+export * from "./runner/PageRunner.js";
+export * from "./runner/OnePageRunner.js";
+export * from "./utils/utils.js";
