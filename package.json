@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "playwright": "^1.44.1",
-    "utils-js": "git+https://github.com/rwiv/utils-js.git#1.0.0"
+    "utils-js": "git+https://github.com/rwiv/utils-js.git#v0.0.1"
   },
   "devDependencies": {
     "typescript": "^5.4.5",
