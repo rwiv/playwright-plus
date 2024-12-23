@@ -1,7 +1,7 @@
 import {Browser, BrowserContext, LaunchOptions, Page} from "playwright";
 import {BrowserContextOptions} from "playwright";
 import {createBrowser} from "../utils/playwright.js";
-import {Args} from "../types.js";
+import {Args, Cookie} from "../types.js";
 
 export abstract class OnePageRunner<T> {
 
@@ -10,11 +10,13 @@ export abstract class OnePageRunner<T> {
   private readonly browserType: "chromium" | "firefox" = "firefox";
   private readonly launchOption: LaunchOptions | undefined = undefined;
   private readonly ctxOpt: BrowserContextOptions | undefined = undefined;
+  private readonly cookies: Cookie[] | undefined = undefined;
 
   constructor(args: Args) {
     this.browserType = args.browserType ?? "chromium";
     this.launchOption = args.launchOption;
     this.ctxOpt = args.ctxOpt;
+    this.cookies = args.cookies;
   }
 
   protected abstract run(page: Page): Promise<T>
@@ -22,6 +24,9 @@ export abstract class OnePageRunner<T> {
   async start(): Promise<T> {
     const browser = await createBrowser(this.browserType, this.launchOption);
     const context = await browser.newContext(this.ctxOpt);
+    if (this.cookies !== undefined) {
+      await context.addCookies(this.cookies);
+    }
     this.browser = browser;
     this.context = context;
 
